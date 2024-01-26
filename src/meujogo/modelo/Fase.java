@@ -26,7 +26,7 @@ public class Fase extends JPanel implements ActionListener {
 
         addKeyListener(new TecladoAdapter());
 
-        timer = new Timer(5, this);
+        timer = new Timer(7, this);
         timer.start();
     }
 
@@ -34,12 +34,29 @@ public class Fase extends JPanel implements ActionListener {
         Graphics2D graficos = (Graphics2D) g;
         graficos.drawImage(fundo, 0, 0, null);
         graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
+
+        java.util.List<Tiro> tiros = player.getTiros();
+        for(int i = 0; i < tiros.size(); i++) {
+            Tiro m = tiros.get(i);
+            m.load();
+            graficos.drawImage(m.getImagem(), m.getX(), m.getY(), this);
+        }
+
         g.dispose();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         player.update();
+        java.util.List<Tiro> tiros = player.getTiros();
+        for(int i = 0; i < tiros.size(); i++) {
+            Tiro m = tiros.get(i);
+                if(m.isVisibel()) {
+                    m.update();
+                } else {
+                    tiros.remove(i);
+                }
+        }
         repaint();
     }
 

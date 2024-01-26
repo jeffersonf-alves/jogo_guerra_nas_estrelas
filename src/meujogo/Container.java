@@ -8,7 +8,7 @@ public class Container extends JFrame {
 
     public Container() {
         add(new Fase());
-        setTitle("Meu primeiro jogo");
+        setTitle("Guerra nas Estrelas");
         setSize(1024, 728);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
