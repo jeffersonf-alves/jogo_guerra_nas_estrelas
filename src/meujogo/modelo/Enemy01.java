@@ -10,8 +10,8 @@ public class Enemy01 {
     private int altura, largura;
     private boolean isVisibel;
 
-    private static final int LARGURA = 938;
-    private static int VELOCIDADE = 5;
+    // private static final int LARGURA = 938;
+    private static int VELOCIDADE = 2;
 
     public Enemy01(int x, int y) {
         this.x = x;
@@ -20,18 +20,21 @@ public class Enemy01 {
     }
 
     public void load() {
-        ImageIcon reference = new ImageIcon("res\\arm\\01.png");
+        ImageIcon reference = new ImageIcon("res\\enemy\\enemy01.png");
         imagem = reference.getImage();
 
-        this.largura = imagem.getWidth(null);
-        this.altura = imagem.getHeight(null);
+        largura = imagem.getWidth(null);
+        altura = imagem.getHeight(null);
     }
 
     public void update() {
         this.x -= VELOCIDADE;
-        if(this.x > LARGURA) {
-            isVisibel = false;
-        }
+//        if(this.x > LARGURA) {
+//            isVisibel = false;
+//        }
+    }
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, largura, altura);
     }
 
     public Image getImagem() {

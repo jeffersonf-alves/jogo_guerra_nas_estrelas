@@ -14,11 +14,12 @@ public class Player {
     private int altura, largura;
 
     private List<Tiro> tiros;
+    private boolean isVisivel;
 
     public Player() {
         this.x = 100;
         this.y = 100;
-
+        this.isVisivel = true;
         tiros = new ArrayList<>();
     }
 
@@ -39,6 +40,9 @@ public class Player {
 
     }
 
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, largura, altura);
+    }
     public void keyPressed(KeyEvent tecla) {
         int codigo = tecla.getKeyCode();
 
@@ -91,5 +95,13 @@ public class Player {
 
     public List<Tiro> getTiros() {
         return tiros;
+    }
+
+    public boolean isVisivel() {
+        return isVisivel;
+    }
+
+    public void setVisivel(boolean visivel) {
+        isVisivel = visivel;
     }
 }
